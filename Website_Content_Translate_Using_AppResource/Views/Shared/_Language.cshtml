@@ -1,0 +1,31 @@
+﻿
+@{
+    var CurrCulture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+    @using (Html.BeginForm("ChangeCulture", "Home"))
+{
+    @Html.DropDownList("lang",new List<SelectListItem>(){
+     
+    new SelectListItem(){Text="English",Value="en-US",Selected ="en-us"==CurrCulture || "en-us"==CurrCulture },
+    new SelectListItem(){Text="Chinese",Value="zh-CN",Selected ="zh-CN"==CurrCulture || "zh-cn"==CurrCulture},
+    //new SelectListItem(){Text="Hebrew",Value="he-IL",Selected ="he-IL"==CurrCulture || "he-il"==CurrCulture},
+    //new SelectListItem(){Text="Spanish",Value="es-AR",Selected ="es-AR"==CurrCulture || "es-ar"==CurrCulture},
+    //new SelectListItem(){Text="German",Value="de-DE",Selected ="de-DE"==CurrCulture || "de-de"==CurrCulture},
+    //new SelectListItem(){Text="French",Value="fr-CA",Selected ="fr-CA"==CurrCulture || "fr-ca"==CurrCulture},
+    //new SelectListItem(){Text="Italian",Value="it-IT",Selected ="it-IT"==CurrCulture || "it-it"==CurrCulture},
+    //new SelectListItem(){Text="Japanese",Value="ja-JP",Selected ="ja-JP"==CurrCulture || "ja-ja"==CurrCulture},
+   
+},new {id="lang"});
+    
+    @Html.Hidden("returnUrl",this.Request.RawUrl);
+} 
+
+<script>
+    $(function () {
+        $("#lang").addClass("input-sm");
+        $("#lang").change(function () {
+            this.form.submit();
+        });
+    });
+</script>
